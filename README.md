@@ -97,10 +97,10 @@ The `student_work/` directory is ignored by Git and is not backed up by this rep
 ## Repository layout
 
 ```text
-notebooks/          Clean notebooks
-student_work/       Editable student copies; created locally and ignored by Git
-scripts/            Small scripts used to prepare the student workspace
-update_course.py    Downloads updates and prepares newly released notebooks
-environment.yml     Packages needed to run the notebooks locally
+notebooks/               Clean notebooks
+notebooks/course_tools/  Imported helper code
+student_work/            Editable student copies; created locally and ignored by Git
+scripts/                 Small scripts used to prepare the student workspace
+update_course.py         Downloads updates and prepares newly released notebooks
+environment.yml          Packages needed to run the notebooks locally
 ```
-
