@@ -1,0 +1,15 @@
+name: spacephysics
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.12
+  - jupyterlab
+  - ipykernel
+  - numpy
+  - scipy
+  - pandas
+  - xarray
+  - matplotlib
+  - viresclient

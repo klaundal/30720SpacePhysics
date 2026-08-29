@@ -78,6 +78,9 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# Local notebook copies that students edit during the course
+/student_work/
+
 # IPython
 profile_default/
 ipython_config.py
