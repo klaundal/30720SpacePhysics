@@ -10,6 +10,12 @@ dependencies:
   - numpy
   - scipy
   - pandas
+  - xlrd
   - xarray
   - matplotlib
+  - ipympl
+  - cartopy=0.24
   - viresclient
+  - pip
+  - pip:
+      - ppigrf
