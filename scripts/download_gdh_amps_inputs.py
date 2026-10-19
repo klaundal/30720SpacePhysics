@@ -24,7 +24,7 @@ data_directory.mkdir(parents=True, exist_ok=True)
 
 request = SwarmRequest()
 request.set_collection('SW_OPER_AUX_OBSM2_:GDH')
-request.set_products(measurements=['B_NEC', 'Quality'], models={'CHAOS-internal': ''CHAOS-Core' + 'CHAOS-Static''}, residuals=True)
+request.set_products(measurements=['B_NEC', 'Quality'], models={'CHAOS-internal': '"CHAOS-Core" + "CHAOS-Static"'}, residuals=True)
 ground = request.get_between(start_time=date.to_pydatetime(), end_time=end.to_pydatetime()).as_dataframe(expand=True)
 
 residual_name = next(column.rsplit('_', 1)[0] for column in ground.columns if column.startswith('B_NEC_res_') and column.endswith('_N'))
