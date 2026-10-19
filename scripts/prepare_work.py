@@ -1,4 +1,4 @@
-"""Copy course notebooks and tools to the local student workspace."""
+"""Copy course notebooks, tools, and data to the local student workspace."""
 
 from pathlib import Path
 import shutil
@@ -7,6 +7,7 @@ import shutil
 repository_directory = Path(__file__).resolve().parent.parent
 source_directory     = repository_directory / "notebooks"
 tools_directory      = source_directory / "course_tools"
+data_directory       = repository_directory / "data"
 work_directory       = repository_directory / "student_work"
 
 if not source_directory.is_dir():
@@ -17,6 +18,10 @@ source_notebooks = sorted(
     if ".ipynb_checkpoints" not in path.parts
 )
 source_tools = sorted(tools_directory.rglob("*.py"))
+source_data  = sorted(
+    path for path in data_directory.rglob("*")
+    if path.is_file() and path.name != ".DS_Store"
+)
 
 if not source_notebooks:
     raise SystemExit(f"No notebooks were found in: {source_directory}")
@@ -26,6 +31,7 @@ work_directory.mkdir(parents=True, exist_ok=True)
 copied_notebooks   = []
 existing_notebooks = []
 updated_tools      = []
+updated_data       = []
 
 for source_notebook in source_notebooks:
     relative_path        = source_notebook.relative_to(source_directory)
@@ -47,6 +53,14 @@ for source_tool in source_tools:
     shutil.copy2(source_tool, destination_tool)
     updated_tools.append(relative_path)
 
+for source_data_file in source_data:
+    relative_path         = source_data_file.relative_to(data_directory)
+    destination_data_file = work_directory / "data" / relative_path
+
+    destination_data_file.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source_data_file, destination_data_file)
+    updated_data.append(relative_path)
+
 if copied_notebooks:
     print("Copied new notebooks to student_work:")
     for notebook in copied_notebooks:
@@ -61,6 +75,11 @@ if updated_tools:
     print("Updated course tools:")
     for tool in updated_tools:
         print(f"  {tool}")
+
+if updated_data:
+    print("Updated course data:")
+    for data_file in updated_data:
+        print(f"  data/{data_file}")
 
 print()
 print("Work only in student_work, and remember to back up that directory.")
