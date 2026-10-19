@@ -16,7 +16,15 @@ dependencies:
   - ipympl
   - cartopy=0.24
   - viresclient
+  # apexpy contains a Fortran extension. Install its compilers from conda-forge
+  # before pip builds apexpy below.
+  - c-compiler
+  - fortran-compiler
   - pip
   - pip:
+      - apexpy==2.1.1
+      - pyswipe==0.9.8.1
+      - git+https://github.com/klaundal/dipole.git
+      - git+https://github.com/klaundal/polplot.git
       - ppigrf
       - pymsis

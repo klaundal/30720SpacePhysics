@@ -51,6 +51,8 @@ mamba env create -f environment.yml
 mamba activate spacephysics
 ```
 
+The environment installs the conda-forge compiler toolchain before installing `apexpy`. This is intentional: `apexpy` contains a Fortran extension and currently has limited prebuilt-wheel coverage. Avoid installing `apexpy` separately with `pip` before creating the environment.
+
 If `environment.yml` changes later, update it with `mamba env update -f environment.yml --prune`.
 
 If activation is not configured, run `mamba shell init -s zsh` on macOS, `mamba shell init -s bash` on Linux, or `mamba shell init -s powershell` in Windows PowerShell. Restart the terminal afterwards.
