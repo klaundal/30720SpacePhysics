@@ -223,5 +223,7 @@ __marimo__/
 
 # Data
 *.csv
+!data/gdh_20250526/gdh_magnetic_residual_20250526_1min.csv
+!data/gdh_20250526/swipe_drivers_20250526_1min.csv
 
 .DS_Store
