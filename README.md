@@ -63,6 +63,8 @@ Prepare the editable notebook copies:
 python update_course.py
 ```
 
+The update script also installs the small course packages `dipole` and `polplot` in the Python environment from which it is run if they are missing. This applies both locally and in the VRE.
+
 If the `python` command is not available, try `py` on Windows or `python3` on macOS/Linux. If you are working locally, start JupyterLab:
 
 ```bash
@@ -85,10 +87,11 @@ Before class, run this command from the repository directory:
 python update_course.py
 ```
 
-The update script performs two operations:
+The update script performs three operations:
 
 1. It downloads the latest course material from GitHub.
-2. It copies newly released notebooks into `student_work/`.
+2. It installs the course packages `dipole` and `polplot` if they are missing.
+3. It copies newly released notebooks and supporting data into `student_work/`.
 
 An existing file in `student_work/` is **never overwritten**. This means that an update will not remove answers or code already written by a student.
 

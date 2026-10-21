@@ -1,7 +1,10 @@
 """Copy course notebooks, tools, and data to the local student workspace."""
 
 from pathlib import Path
+import importlib.util
 import shutil
+import subprocess
+import sys
 
 
 repository_directory = Path(__file__).resolve().parent.parent
@@ -9,6 +12,26 @@ source_directory     = repository_directory / "notebooks"
 tools_directory      = source_directory / "course_tools"
 data_directory       = repository_directory / "data"
 work_directory       = repository_directory / "student_work"
+
+course_packages = [
+    ("dipole",  "git+https://github.com/klaundal/dipole.git"),
+    ("polplot", "git+https://github.com/klaundal/polplot.git"),
+]
+
+print("Checking course Python packages...")
+
+for module_name, package_location in course_packages:
+    if importlib.util.find_spec(module_name) is not None:
+        print(f"  {module_name} is already installed.")
+        continue
+
+    print(f"  Installing {module_name}...")
+    installation = subprocess.run([sys.executable, "-m", "pip", "install", package_location])
+
+    if installation.returncode != 0:
+        raise SystemExit(f"The installation of {module_name} failed. The course files were updated, but this Python environment is not ready.")
+
+print()
 
 if not source_directory.is_dir():
     raise SystemExit(f"The notebook directory does not exist: {source_directory}")
