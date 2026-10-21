@@ -29,6 +29,15 @@ The simplest option is to use the VirES Virtual Research Environment (VRE), wher
 
 Then follow the getting-started instructions below in that terminal.
 
+On the VRE, do **not** create the Conda environment from `environment.yml`. The VRE already provides Python, JupyterLab, and the main scientific packages. After cloning the repository, run only:
+
+```bash
+cd 30720SpacePhysics
+python update_course.py
+```
+
+This installs the small additional course packages if they are missing and prepares the notebooks and data in `student_work/`.
+
 ## Option 2: your own computer
 
 You can instead run JupyterLab locally. It still opens in your browser, but Python runs on your computer and the notebooks remain on your own disk. This requires a local Python environment, described below, but gives you control of the installed software and files.
@@ -42,9 +51,9 @@ git clone https://github.com/klaundal/30720SpacePhysics
 cd 30720SpacePhysics
 ```
 
-### Local Python environment
+### Local Python environment — skip this section in the VRE
 
-Skip this section when using the VRE. With [Miniforge](https://github.com/conda-forge/miniforge) installed, create and activate the local course environment:
+The following commands are only for a local computer. With [Miniforge](https://github.com/conda-forge/miniforge) installed, create and activate the local course environment:
 
 ```bash
 mamba env create -f environment.yml
