@@ -16,10 +16,10 @@ dependencies:
   - ipympl
   - cartopy=0.24
   - viresclient
-  # apexpy contains a Fortran extension. Install its compilers from conda-forge
-  # before pip builds apexpy below.
-  - c-compiler
-  - fortran-compiler
+  # apexpy contains C and Fortran extensions. Use an explicit GCC/Gfortran pair;
+  # on Windows, c-compiler only activates an external MSVC installation.
+  - gcc
+  - gfortran
   - pip
   - pip:
       - apexpy==2.1.1
