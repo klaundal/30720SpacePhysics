@@ -227,3 +227,6 @@ __marimo__/
 !data/gdh_20250526/swipe_drivers_20250526_1min.csv
 
 .DS_Store
+
+# Report 2 downloaded data cache
+/notebooks/report_2_data/
